@@ -234,21 +234,12 @@ h1, h2, h3, h4, h5, h6, .font-title {
 }
 
 /* Pill Accordion for FAQ */
-.faq-pill {
-  background: #000000;
-  border: 1px solid var(--border-light);
-  border-radius: 9999px;
-  padding: 1rem 1.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  width: 100%;
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-.faq-pill:hover {
-  border-color: rgba(255, 255, 255, 0.4);
+.faq-item.active:hover {
+  border-color: var(--crimson-magenta);
 }
 
 /* Input Fields matching Form.jpg */
