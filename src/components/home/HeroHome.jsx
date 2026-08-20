@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 export default function HeroHome() {
+  const { t, i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
   const heroRef = useRef(null);
   const rockRef = useRef(null);
   const floatingRocksRef = useRef(null);
@@ -125,7 +128,9 @@ export default function HeroHome() {
                 letterSpacing: '-0.01em'
               }}
             >
-              Integramos estrategia, contenido, activos digitales y performance para convertir tu presencia en resultados.
+              {isEn
+                ? 'We integrate strategy, content, digital assets, and performance to convert your presence into results.'
+                : 'Integramos estrategia, contenido, activos digitales y performance para convertir tu presencia en resultados.'}
             </p>
 
             <button
@@ -133,7 +138,7 @@ export default function HeroHome() {
               className="btn-outline"
               style={{ position: 'relative', zIndex: 30, cursor: 'pointer' }}
             >
-              AGENDA UN DIAGNÓSTICO
+              {isEn ? 'SCHEDULE A DIAGNOSTIC' : 'AGENDA UN DIAGNÓSTICO'}
             </button>
           </div>
         </div>

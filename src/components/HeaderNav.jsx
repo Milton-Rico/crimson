@@ -8,16 +8,18 @@ export default function HeaderNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
+  const currentLang = (i18n.language || 'es').startsWith('es') ? 'es' : 'en';
+
   const toggleLanguage = () => {
-    const next = i18n.language === 'es' ? 'en' : 'es';
+    const next = currentLang === 'es' ? 'en' : 'es';
     i18n.changeLanguage(next);
   };
 
   const links = [
     { path: '/', label: 'Home' },
-    { path: '/metodologia', label: 'Services' },
-    { path: '/proyectos', label: 'Proyectos' },
-    { path: '/manifiesto', label: 'Manifiesto' }
+    { path: '/metodologia', label: currentLang === 'es' ? 'Metodología' : 'Methodology' },
+    { path: '/proyectos', label: currentLang === 'es' ? 'Proyectos' : 'Projects' },
+    { path: '/manifiesto', label: currentLang === 'es' ? 'Manifiesto' : 'Manifesto' }
   ];
 
   return (
@@ -83,11 +85,11 @@ export default function HeaderNav() {
             }}
             className="btn-contacto"
           >
-            Contacto
+            {currentLang === 'es' ? 'Contacto' : 'Contact'}
           </button>
 
-          <button onClick={toggleLanguage} className="btn-lang">
-            {i18n.language ? i18n.language.toUpperCase() : 'ES'}
+          <button onClick={toggleLanguage} className="btn-lang" aria-label="Cambiar idioma">
+            {currentLang.toUpperCase()}
           </button>
 
           {/* Mobile Menu Button */}

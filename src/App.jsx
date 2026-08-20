@@ -8,11 +8,27 @@ import MethodPage from './pages/MethodPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 function ScrollToTopOnNavigate() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     window.scrollTo(0, 0);
+
+    // Give the DOM 50ms to mount and recalculate ScrollTriggers from (0, 0)
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
+    }, 60);
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return null;

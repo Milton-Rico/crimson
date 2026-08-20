@@ -16,83 +16,90 @@ function AnimatedTimeline({ steps, align = 'right' }) {
     const container = containerRef.current;
     if (!container) return;
 
-    const line = lineRef.current;
-    const items = itemsRef.current.filter(Boolean);
+    // Timeout ensures window.scrollTo(0,0) and ScrollTrigger.refresh() finished
+    const timeout = setTimeout(() => {
+      const line = lineRef.current;
+      const items = itemsRef.current.filter(Boolean);
+      if (!line || !container) return;
 
-    // Initial state: line is scaleY 0, items are grey/dim
-    gsap.set(line, { scaleY: 0, transformOrigin: 'top center' });
-    items.forEach((item) => {
-      const diamond = item.querySelector('.timeline-diamond');
-      const text = item.querySelector('.timeline-text');
-      const icon = item.querySelector('.timeline-icon');
+      // Initial state: line is scaleY 0, items are grey/dim
+      gsap.set(line, { scaleY: 0, transformOrigin: 'top center' });
+      items.forEach((item) => {
+        const diamond = item.querySelector('.timeline-diamond');
+        const text = item.querySelector('.timeline-text');
+        const icon = item.querySelector('.timeline-icon');
 
-      gsap.set(diamond, {
-        borderColor: 'rgba(255, 255, 255, 0.22)',
-        backgroundColor: '#050505',
-        boxShadow: 'none'
+        gsap.set(diamond, {
+          borderColor: 'rgba(255, 255, 255, 0.22)',
+          backgroundColor: '#050505',
+          boxShadow: 'none'
+        });
+        gsap.set(text, { color: 'rgba(255, 255, 255, 0.45)' });
+        gsap.set(icon, {
+          filter: 'grayscale(1) brightness(0.4) opacity(0.5)',
+          scale: 0.9
+        });
       });
-      gsap.set(text, { color: 'rgba(255, 255, 255, 0.45)' });
-      gsap.set(icon, {
-        filter: 'grayscale(1) brightness(0.4) opacity(0.5)',
-        scale: 0.9
+
+      // ScrollTrigger Timeline - triggers only when scrolling into view
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+          invalidateOnRefresh: true
+        }
       });
-    });
 
-    // ScrollTrigger Timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: 'top 75%',
-        toggleActions: 'play none none none'
-      }
-    });
+      // Animate line drawing down
+      tl.to(line, {
+        scaleY: 1,
+        duration: 1.2,
+        ease: 'power2.out'
+      }, 0);
 
-    // Animate line drawing down
-    tl.to(line, {
-      scaleY: 1,
-      duration: 1.2,
-      ease: 'power2.out'
-    }, 0);
+      // Stagger illuminate each diamond and text to crimson sequentially
+      items.forEach((item, idx) => {
+        const diamond = item.querySelector('.timeline-diamond');
+        const text = item.querySelector('.timeline-text');
+        const icon = item.querySelector('.timeline-icon');
 
-    // Stagger illuminate each diamond and text to crimson sequentially
-    items.forEach((item, idx) => {
-      const diamond = item.querySelector('.timeline-diamond');
-      const text = item.querySelector('.timeline-text');
-      const icon = item.querySelector('.timeline-icon');
+        tl.to(
+          diamond,
+          {
+            borderColor: '#e50a53',
+            backgroundColor: '#000000',
+            boxShadow: '0 0 16px rgba(229, 10, 83, 0.5), inset 0 0 8px rgba(229, 10, 83, 0.25)',
+            duration: 0.35,
+            ease: 'power1.out'
+          },
+          idx * 0.22
+        );
 
-      tl.to(
-        diamond,
-        {
-          borderColor: '#e50a53',
-          backgroundColor: '#000000',
-          boxShadow: '0 0 16px rgba(229, 10, 83, 0.5), inset 0 0 8px rgba(229, 10, 83, 0.25)',
-          duration: 0.35,
-          ease: 'power1.out'
-        },
-        idx * 0.22
-      );
+        tl.to(
+          icon,
+          {
+            filter: 'brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5453%) hue-rotate(334deg) brightness(94%) contrast(97%)',
+            scale: 1,
+            duration: 0.35,
+            ease: 'back.out(1.5)'
+          },
+          idx * 0.22
+        );
 
-      tl.to(
-        icon,
-        {
-          filter: 'brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5453%) hue-rotate(334deg) brightness(94%) contrast(97%)',
-          scale: 1,
-          duration: 0.35,
-          ease: 'back.out(1.5)'
-        },
-        idx * 0.22
-      );
+        tl.to(
+          text,
+          {
+            color: '#ffffff',
+            duration: 0.35,
+            ease: 'power1.out'
+          },
+          idx * 0.22
+        );
+      });
+    }, 70);
 
-      tl.to(
-        text,
-        {
-          color: '#ffffff',
-          duration: 0.35,
-          ease: 'power1.out'
-        },
-        idx * 0.22
-      );
-    });
+    return () => clearTimeout(timeout);
   }, { scope: containerRef });
 
   return (

@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function AboutUs() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   return (
     <section
       id="about"
@@ -25,9 +29,19 @@ export default function AboutUs() {
               letterSpacing: '0.01em'
             }}
           >
-            <span className="text-magenta">Trabajamos</span> con marcas<br />
-            que buscan <span className="text-magenta">estructura,</span><br />
-            no solo <span className="text-magenta">visibilidad.</span>
+            {isEn ? (
+              <>
+                <span className="text-magenta">We work</span> with brands<br />
+                seeking <span className="text-magenta">structure,</span><br />
+                not just <span className="text-magenta">visibility.</span>
+              </>
+            ) : (
+              <>
+                <span className="text-magenta">Trabajamos</span> con marcas<br />
+                que buscan <span className="text-magenta">estructura,</span><br />
+                no solo <span className="text-magenta">visibilidad.</span>
+              </>
+            )}
           </h2>
         </div>
 
@@ -59,7 +73,9 @@ export default function AboutUs() {
                 maxWidth: '340px'
               }}
             >
-              Tienes un negocio validado que no se ve tan profesional como realmente es.
+              {isEn
+                ? 'You have a validated business that does not look as professional as it truly is.'
+                : 'Tienes un negocio validado que no se ve tan profesional como realmente es.'}
             </p>
           </div>
 
@@ -80,7 +96,9 @@ export default function AboutUs() {
                 maxWidth: '340px'
               }}
             >
-              Eres una marca personal que necesita un sistema que trabaje sin depender de tu tiempo 24/7.
+              {isEn
+                ? 'You are a personal brand that needs a system that works without depending on your time 24/7.'
+                : 'Eres una marca personal que necesita un sistema que trabaje sin depender de tu tiempo 24/7.'}
             </p>
           </div>
 
@@ -101,7 +119,9 @@ export default function AboutUs() {
                 maxWidth: '340px'
               }}
             >
-              Buscas un equipo que piense en tu negocio, no solo en "hacer piezas".
+              {isEn
+                ? 'You seek a team that thinks about your business, not just about "making content pieces".'
+                : 'Buscas un equipo que piense en tu negocio, no solo en "hacer piezas".'}
             </p>
           </div>
         </div>
