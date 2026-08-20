@@ -1,0 +1,297 @@
+/* ==========================================================================
+   CRIMSON STUDIO - HIGH-FIDELITY DESIGN SYSTEM (MATCHING PHOTOSHOP SPEC)
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Classic Quality';
+  src: url('/fonts/classic-quality.regular.woff2') format('woff2'),
+       url('/fonts/classic-quality.regular.woff') format('woff'),
+       url('/fonts/classic-quality.regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-black: #000000;
+  --bg-nav: rgba(18, 18, 20, 0.75);
+  --bg-card: #080808;
+  --bg-pill: rgba(255, 255, 255, 0.03);
+  
+  /* Brand Crimson Red Color #e50a53 */
+  --crimson-magenta: #e50a53;
+  --crimson-magenta-hover: #ff1a6c;
+  --crimson-dark: #8b0030;
+  
+  --text-white: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.85);
+  
+  --border-light: rgba(255, 255, 255, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(229, 10, 83, 0.6);
+  
+  --font-title: 'Classic Quality', Georgia, serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--bg-black);
+  color: var(--text-white);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6, .font-title {
+  font-family: var(--font-title);
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  color: var(--text-white);
+}
+
+.text-magenta {
+  color: var(--crimson-magenta);
+}
+
+.highlight-badge {
+  background: var(--crimson-magenta);
+  color: #fff;
+  padding: 1px 7px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Floating Navigation Bar */
+.nav-pill-container {
+  position: relative;
+  width: 92%;
+  max-width: 980px;
+  margin: 1.25rem auto;
+  padding: 0.6rem 1.5rem;
+  background: var(--bg-nav);
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--crimson-magenta);
+}
+
+.btn-contacto {
+  background: var(--crimson-magenta);
+  color: #fff;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1.35rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-contacto:hover {
+  background: var(--crimson-magenta-hover);
+  transform: translateY(-1px);
+}
+
+.btn-lang {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-lang:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Outline Buttons with Rich Interactive Hover Animations */
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  padding: 0.75rem 1.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--crimson-magenta);
+  color: #ffffff;
+  background: rgba(229, 10, 83, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 10, 83, 0.35);
+}
+
+.btn-outline:hover::before {
+  left: 100%;
+}
+
+.btn-outline:active {
+  transform: translateY(-1px);
+}
+
+/* Solid Crimson Buttons */
+.btn-solid-crimson {
+  display: inline-block;
+  background: var(--crimson-magenta);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-solid-crimson:hover {
+  background: var(--crimson-magenta-hover);
+  transform: translateY(-2px);
+}
+
+/* Cards with fine white outline and rich hover animations */
+.crimson-card {
+  background: #000000;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  padding: 2.25rem 1.75rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.crimson-card:hover {
+  border-color: var(--crimson-magenta);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(229, 10, 83, 0.28), 0 0 15px rgba(229, 10, 83, 0.15);
+}
+
+/* Pill Accordion for FAQ */
+.faq-pill {
+  background: #000000;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 1rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.faq-pill:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Input Fields matching Form.jpg */
+.crimson-input {
+  width: 100%;
+  background: #000000;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 0.9rem 1.25rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease;
+}
+
+.crimson-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.crimson-input:focus {
+  border-color: var(--crimson-magenta);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--crimson-magenta);
+}

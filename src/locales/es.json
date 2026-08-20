@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "manifesto": "Manifiesto",
+    "method": "Metodología",
+    "projects": "Casos de Éxito",
+    "cta": "Diagnóstico Gratuito"
+  },
+  "hero": {
+    "badge": "Growth System & Brand Agency",
+    "title": "Aceleramos el crecimiento de tu marca con estrategia y ejecución despiadada.",
+    "subtitle": "Impulsamos empresas visionarias mediante metodología comprobada, arquitectura de contenido y activos digitales de alto impacto.",
+    "cta_primary": "Comenzar Diagnóstico",
+    "cta_secondary": "Conocer Metodología"
+  },
+  "about": {
+    "badge": "Sobre Nosotros",
+    "title": "No somos una agencia tradicional. Somos tu motor de crecimiento.",
+    "p1": "En Crimson combinamos pensamiento estratégico, diseño provocativo y ejecución de alta precisión para construir marcas dominantes en su categoría.",
+    "p2": "Creemos en sistemas sostenibles de crecimiento, donde cada activo digital trabaja en armonía para convertir atención en rentabilidad."
+  },
+  "banner": {
+    "phrase1": "ESTRATEGIA • CONTENIDO • ACTIVOS • OPERACIONES",
+    "phrase2": "SISTEMA DE CRECIMIENTO CRIMSON • BRAND ACCELERATION"
+  },
+  "method_phrase": {
+    "title": "El Crimson Method no es un servicio, es una ventaja competitiva escalar.",
+    "author": "— Metodología Crimson"
+  },
+  "benefits": {
+    "badge": "Beneficios Exclusivos",
+    "title": "Por qué las marcas líderes eligen Crimson",
+    "item1_title": "Claridad Estratégica",
+    "item1_desc": "Diseñamos un mapa de ruta exacto donde cada acción responde a métricas reales de negocio.",
+    "item2_title": "Identidad Inolvidable",
+    "item2_desc": "Estética premium y narrativa de marca que destaca de inmediato sobre el ruido del mercado.",
+    "item3_title": "Ejecución Ágil",
+    "item3_desc": "Sistemas optimizados para lanzar campañas y activos digitales en tiempos récord sin perder calidad.",
+    "item4_title": "Retorno Medible",
+    "item4_desc": "Enfocados en conversión, retención y aumento directo del valor del cliente."
+  },
+  "growth_system": {
+    "badge": "Growth System",
+    "title": "Un ecosistema integrado en 4 etapas clave",
+    "step1_num": "01",
+    "step1_title": "Estrategia de Crecimiento",
+    "step1_desc": "Investigación profunda del mercado, posicionamiento de marca y definición de oferta irresistible.",
+    "step2_num": "02",
+    "step2_title": "Generación de Contenido",
+    "step2_desc": "Narrativa de alto impacto, producción audiovisual y storytelling estructurado.",
+    "step3_num": "03",
+    "step3_title": "Desarrollo de Activos",
+    "step3_desc": "Plataformas web, landing pages, identidades visuales y embudos de conversión.",
+    "step4_num": "04",
+    "step4_title": "Operaciones & Escala",
+    "step4_desc": "Optimización continua, automatizaciones e infraestructura de crecimiento a largo plazo."
+  },
+  "projects": {
+    "badge": "Casos de Éxito",
+    "title": "Resultados reales para marcas que desafían lo convencional",
+    "subtitle": "Explora algunos de nuestros proyectos más destacados.",
+    "view_case": "Ver caso de estudio",
+    "client1": "Berrinche",
+    "client1_cat": "Brand & Digital Strategy",
+    "client2": "Birdtur",
+    "client2_cat": "Visual Identity & Motion",
+    "client3": "Boticasol",
+    "client3_cat": "E-Commerce & Growth",
+    "client4": "Alma",
+    "client4_cat": "Brand Platform",
+    "client5": "Ozzies",
+    "client5_cat": "Content System"
+  },
+  "faq": {
+    "badge": "Preguntas Frecuentes",
+    "title": "Resuelve tus dudas sobre el proceso",
+    "q1": "¿Qué hace diferente al Método Crimson?",
+    "a1": "Integración total. No dividimos la estrategia del contenido ni del desarrollo web. Todo es un solo sistema optimizado para el crecimiento directo de tu marca.",
+    "q2": "¿Cuánto tiempo toma implementar el Growth System?",
+    "a2": "Normalmente completamos la fase de diagnóstico y estructuración inicial en 2 a 4 semanas, lanzando activos de impacto desde el primer mes.",
+    "q3": "¿Cómo se realiza el seguimiento de los resultados?",
+    "a3": "Utilizamos dashboards en tiempo real y reportes ejecutivos semanales enfocados en KPIs de conversión y adquisición.",
+    "q4": "¿Para qué tamaño de empresa es adecuado Crimson?",
+    "a4": "Trabajamos con empresas en fase de aceleración, marcas consolidadas buscando refrescar su posicionamiento o startups con capital validado."
+  },
+  "form": {
+    "badge": "Diagnóstico de Crecimiento",
+    "title": "Solicita tu Diagnóstico Gratuito",
+    "subtitle": "Completa los datos de tu empresa y nuestro equipo estratégico evaluará las oportunidades de crecimiento de tu marca.",
+    "name_label": "Nombre completo",
+    "name_placeholder": "Ej. Carlos Rodríguez",
+    "email_label": "Correo electrónico",
+    "email_placeholder": "carlos@tuempresa.com",
+    "company_label": "Nombre de la empresa",
+    "company_placeholder": "Tu Empresa S.A.",
+    "service_label": "Servicio de interés",
+    "service_opt1": "Sistema Completo de Crecimiento",
+    "service_opt2": "Rediseño Web & Plataforma Digital",
+    "service_opt3": "Estrategia de Marca & Contenido",
+    "budget_label": "Presupuesto estimado",
+    "budget_opt1": "$3,000 - $5,000 USD",
+    "budget_opt2": "$5,000 - $10,000 USD",
+    "budget_opt3": "$10,000+ USD",
+    "message_label": "Cuéntanos sobre tus objetivos actuales",
+    "message_placeholder": "Describe tu principal desafío de crecimiento...",
+    "submit_btn": "Enviar Diagnóstico",
+    "submitting": "Enviando diagnóstico...",
+    "success_title": "¡Diagnóstico Recibido!",
+    "success_desc": "Gracias por ponerte en contacto. Nuestro equipo analizará tu información y se comunicará contigo en menos de 24 horas.",
+    "error_title": "Ocurrió un inconveniente",
+    "error_desc": "No se pudo enviar el formulario. Por favor intenta nuevamente o escríbenos directamente."
+  },
+  "blog": {
+    "badge": "Insights & Blog",
+    "title": "Perspectivas sobre marca, estrategia y crecimiento",
+    "read_more": "Leer artículo"
+  },
+  "manifesto_page": {
+    "badge": "El Manifiesto Crimson",
+    "title": "Rechazamos lo ordinario. Abrazamos la maestría.",
+    "intro": "En un mundo saturado de contenido mediocre y estrategias genéricas, Crimson existe para las marcas que exigen trascender.",
+    "point1_title": "1. El diseño sin estrategia es solo decoración.",
+    "point1_desc": "Cada píxel, cada línea de código y cada frase debe servir a una intención clara: acelerar el valor percibido y real de tu negocio.",
+    "point2_title": "2. La velocidad de ejecución es la ventaja suprema.",
+    "point2_desc": "Las ideas valen poco sin ejecución implacable. Lanzamos, medimos y optimizamos en ciclos continuos.",
+    "point3_title": "3. La identidad de marca debe provocar emoción.",
+    "point3_desc": "Las marcas tibias mueren en el olvido. Construimos experiencias visuales y narrativas que demandan atención y lealtad.",
+    "cta": "Únete al Movimiento Crimson"
+  },
+  "method_page": {
+    "badge": "Metodología Crimson",
+    "title": "El Proceso de Transformación",
+    "subtitle": "Un método estructurado en 6 pilares para escalar con precisión.",
+    "f1_title": "1. Hero & Visión",
+    "f1_desc": "Definición del ADN de la marca y alineación estratégica de objetivos de negocio.",
+    "f2_title": "2. Características Clave",
+    "f2_desc": "Identificación de los diferenciadores centrales e indicadores clave de rendimiento.",
+    "f3_title": "3. Estrategia de Crecimiento",
+    "f3_desc": "Construcción de mapas de conversión, segmentación de audiencia y embudos.",
+    "f4_title": "4. Producción de Contenido",
+    "f4_desc": "Creación de piezas narrativas y activaciones visuales de alto nivel.",
+    "f5_title": "5. Arquitectura de Activos",
+    "f5_desc": "Desarrollo tecnológico de plataformas, sitios web e identidades digitales.",
+    "f6_title": "6. Operaciones & Escala",
+    "f6_desc": "Integración de sistemas, automatización y monitoreo de crecimiento."
+  },
+  "projects_page": {
+    "badge": "Portafolio de Impacto",
+    "title": "Casos de Éxito Seleccionados",
+    "stat1_val": "+250%",
+    "stat1_lbl": "Aumento en tasa de conversión promedio",
+    "stat2_val": "$12M+",
+    "stat2_lbl": "Ingresos generados para nuestros clientes",
+    "stat3_val": "98%",
+    "stat3_lbl": "Retención y satisfacción de clientes",
+    "obj_title": "Objetivos y Resultados Destacados"
+  },
+  "footer": {
+    "tagline": "Aceleramos el crecimiento de marcas visionarias con estrategia y diseño de vanguardia.",
+    "links_title": "Navegación",
+    "social_title": "Conéctate",
+    "rights": "© 2026 Crimson Agency. Todos los derechos reservados."
+  }
+}

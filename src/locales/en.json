@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "home": "Home",
+    "manifesto": "Manifesto",
+    "method": "Method",
+    "projects": "Case Studies",
+    "cta": "Free Diagnostic"
+  },
+  "hero": {
+    "badge": "Growth System & Brand Agency",
+    "title": "We accelerate your brand's growth with ruthless strategy & execution.",
+    "subtitle": "Empowering visionary companies through proven methodology, content architecture, and high-impact digital assets.",
+    "cta_primary": "Start Diagnostic",
+    "cta_secondary": "Explore Method"
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "We are not a traditional agency. We are your growth engine.",
+    "p1": "At Crimson, we combine strategic thinking, provocative design, and high-precision execution to build category-defining brands.",
+    "p2": "We believe in sustainable growth systems where every digital asset works in harmony to convert attention into profitability."
+  },
+  "banner": {
+    "phrase1": "STRATEGY • CONTENT • ASSETS • OPERATIONS",
+    "phrase2": "CRIMSON GROWTH SYSTEM • BRAND ACCELERATION"
+  },
+  "method_phrase": {
+    "title": "The Crimson Method is not a service—it is a scalable competitive advantage.",
+    "author": "— Crimson Methodology"
+  },
+  "benefits": {
+    "badge": "Exclusive Benefits",
+    "title": "Why industry leaders choose Crimson",
+    "item1_title": "Strategic Clarity",
+    "item1_desc": "We build an exact roadmap where every action directly impacts real business metrics.",
+    "item2_title": "Unforgettable Identity",
+    "item2_desc": "Premium aesthetics and brand storytelling that instantly cuts through market noise.",
+    "item3_title": "Agile Execution",
+    "item3_desc": "Streamlined systems to deploy campaigns and digital assets in record time without compromising quality.",
+    "item4_title": "Measurable ROI",
+    "item4_desc": "Focused on conversion, retention, and scaling customer lifetime value."
+  },
+  "growth_system": {
+    "badge": "Growth System",
+    "title": "An integrated ecosystem in 4 core stages",
+    "step1_num": "01",
+    "step1_title": "Growth Strategy",
+    "step1_desc": "In-depth market research, brand positioning, and irresistible offer framing.",
+    "step2_num": "02",
+    "step2_title": "Content Generation",
+    "step2_desc": "High-impact narratives, audiovisual production, and structured storytelling.",
+    "step3_num": "03",
+    "step3_title": "Assets Development",
+    "step3_desc": "Web platforms, high-converting landing pages, and visual brand identities.",
+    "step4_num": "04",
+    "step4_title": "Operations & Scale",
+    "step4_desc": "Continuous optimization, automation, and long-term scaling infrastructure."
+  },
+  "projects": {
+    "badge": "Case Studies",
+    "title": "Real results for brands that challenge the status quo",
+    "subtitle": "Explore some of our most impactful client work.",
+    "view_case": "View Case Study",
+    "client1": "Berrinche",
+    "client1_cat": "Brand & Digital Strategy",
+    "client2": "Birdtur",
+    "client2_cat": "Visual Identity & Motion",
+    "client3": "Boticasol",
+    "client3_cat": "E-Commerce & Growth",
+    "client4": "Alma",
+    "client4_cat": "Brand Platform",
+    "client5": "Ozzies",
+    "client5_cat": "Content System"
+  },
+  "faq": {
+    "badge": "Frequently Asked Questions",
+    "title": "Clear answers to your questions",
+    "q1": "What makes the Crimson Method different?",
+    "a1": "Total integration. We don't separate strategy from content or web development. Everything operates as one unified system optimized for direct brand growth.",
+    "q2": "How long does it take to implement the Growth System?",
+    "a2": "Typically, we complete the initial diagnostic and structuring phase in 2 to 4 weeks, launching high-impact assets within the first month.",
+    "q3": "How do you track performance and results?",
+    "a3": "We use real-time dashboards and weekly executive reports focused on conversion metrics and customer acquisition cost.",
+    "q4": "What size of business is Crimson best suited for?",
+    "a4": "We work with scaling enterprises, established brands refreshing their positioning, or funded startups looking for rapid market validation."
+  },
+  "form": {
+    "badge": "Growth Diagnostic",
+    "title": "Request Your Free Diagnostic",
+    "subtitle": "Fill in your company details and our strategic team will evaluate your brand's growth potential.",
+    "name_label": "Full Name",
+    "name_placeholder": "e.g., Alex Morgan",
+    "email_label": "Email Address",
+    "email_placeholder": "alex@yourcompany.com",
+    "company_label": "Company Name",
+    "company_placeholder": "Your Company Inc.",
+    "service_label": "Service of Interest",
+    "service_opt1": "Full Growth System",
+    "service_opt2": "Web Redesign & Digital Platform",
+    "service_opt3": "Brand Strategy & Content",
+    "budget_label": "Estimated Budget",
+    "budget_opt1": "$3,000 - $5,000 USD",
+    "budget_opt2": "$5,000 - $10,000 USD",
+    "budget_opt3": "$10,000+ USD",
+    "message_label": "Tell us about your current goals",
+    "message_placeholder": "Describe your primary growth challenge...",
+    "submit_btn": "Submit Diagnostic",
+    "submitting": "Submitting diagnostic...",
+    "success_title": "Diagnostic Received!",
+    "success_desc": "Thank you for getting in touch. Our team will review your information and get back to you within 24 hours.",
+    "error_title": "Something went wrong",
+    "error_desc": "Could not send form. Please try again or reach out to us directly."
+  },
+  "blog": {
+    "badge": "Insights & Blog",
+    "title": "Perspectives on brand, strategy & scale",
+    "read_more": "Read Article"
+  },
+  "manifesto_page": {
+    "badge": "The Crimson Manifesto",
+    "title": "We reject the ordinary. We embrace mastery.",
+    "intro": "In a world saturated with mediocre content and generic tactics, Crimson exists for brands demanding transcendence.",
+    "point1_title": "1. Design without strategy is merely decoration.",
+    "point1_desc": "Every pixel, line of code, and phrase must serve a clear purpose: accelerating your business's perceived and actual value.",
+    "point2_title": "2. Speed of execution is the ultimate moat.",
+    "point2_desc": "Ideas are worth little without relentless execution. We launch, measure, and optimize in rapid continuous loops.",
+    "point3_title": "3. Brand identity must command emotion.",
+    "point3_desc": "LUKewarm brands fade into obscurity. We engineer visual and narrative experiences that demand attention and foster loyalty.",
+    "cta": "Join the Crimson Movement"
+  },
+  "method_page": {
+    "badge": "Crimson Methodology",
+    "title": "The Transformation Process",
+    "subtitle": "A structured 6-pillar framework to scale with precision.",
+    "f1_title": "1. Hero & Vision",
+    "f1_desc": "Brand DNA definition and strategic alignment with key business objectives.",
+    "f2_title": "2. Core Features",
+    "f2_desc": "Identification of key differentiators and primary performance indicators.",
+    "f3_title": "3. Growth Strategy",
+    "f3_desc": "Building conversion funnels, audience segmentation, and acquisition maps.",
+    "f4_title": "4. Content Production",
+    "f4_desc": "Creation of narrative assets and top-tier visual activations.",
+    "f5_title": "5. Assets Architecture",
+    "f5_desc": "Technological engineering of platforms, websites, and brand ecosystems.",
+    "f6_title": "6. Operations & Scale",
+    "f6_desc": "System integration, workflow automation, and long-term growth monitoring."
+  },
+  "projects_page": {
+    "badge": "Impact Portfolio",
+    "title": "Selected Case Studies",
+    "stat1_val": "+250%",
+    "stat1_lbl": "Average conversion rate lift",
+    "stat2_val": "$12M+",
+    "stat2_lbl": "Revenue generated for clients",
+    "stat3_val": "98%",
+    "stat3_lbl": "Client satisfaction & retention",
+    "obj_title": "Project Objectives & Key Outcomes"
+  },
+  "footer": {
+    "tagline": "Accelerating visionary brands with vanguard strategy and design.",
+    "links_title": "Navigation",
+    "social_title": "Connect",
+    "rights": "© 2026 Crimson Agency. All rights reserved."
+  }
+}
