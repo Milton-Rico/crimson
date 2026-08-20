@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6, .font-title {
   padding: 0.6rem 1.5rem;
   background: var(--bg-nav);
   border: 1px solid var(--border-light);
-  border-radius: 9999px;
+  border-radius: 16px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;

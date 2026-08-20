@@ -48,7 +48,7 @@ export default function FAQAccordion() {
         </div>
 
         {/* List of 16 Smooth Accordions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '4rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '4rem' }}>
           {questions.map((item, idx) => {
             const isOpen = openIdx === idx;
             return (
@@ -58,11 +58,11 @@ export default function FAQAccordion() {
                 style={{
                   background: isOpen ? 'rgba(229, 10, 83, 0.04)' : '#000000',
                   border: isOpen ? '1px solid var(--crimson-magenta)' : '1px solid var(--border-light)',
-                  borderRadius: isOpen ? '22px' : '9999px',
+                  borderRadius: '16px',
                   boxShadow: isOpen
                     ? '0 0 25px rgba(229, 10, 83, 0.2), inset 0 0 15px rgba(229, 10, 83, 0.06)'
                     : 'none',
-                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transition: 'border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease',
                   overflow: 'hidden'
                 }}
               >
@@ -74,7 +74,7 @@ export default function FAQAccordion() {
                     width: '100%',
                     background: 'transparent',
                     border: 'none',
-                    padding: '1.15rem 1.85rem',
+                    padding: '1.15rem 1.75rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -89,7 +89,7 @@ export default function FAQAccordion() {
                     style={{
                       fontFamily: 'var(--font-body)',
                       color: isOpen ? '#ffffff' : 'rgba(255, 255, 255, 0.88)',
-                      fontSize: '1rem',
+                      fontSize: '0.98rem',
                       fontWeight: isOpen ? '600' : '400',
                       letterSpacing: '-0.01em',
                       transition: 'color 0.25s ease, font-weight 0.25s ease',
@@ -99,12 +99,12 @@ export default function FAQAccordion() {
                     {item.q}
                   </span>
 
-                  {/* Icon with smooth rotate and crimson glow */}
+                  {/* Sword Icon with smooth rotate and crimson glow */}
                   <div
                     style={{
                       width: '28px',
                       height: '28px',
-                      borderRadius: '50%',
+                      borderRadius: '8px',
                       background: isOpen ? 'rgba(229, 10, 83, 0.15)' : 'transparent',
                       display: 'flex',
                       alignItems: 'center',
@@ -114,16 +114,16 @@ export default function FAQAccordion() {
                     }}
                   >
                     <img
-                      src="/assets/dragones/Recurso 2.svg"
-                      alt="Icon"
+                      src="/assets/metodologia/Recurso 18.svg"
+                      alt="Espada"
                       className="faq-icon"
                       style={{
-                        width: '18px',
-                        height: '18px',
+                        width: '16px',
+                        height: '22px',
                         filter: isOpen
                           ? 'brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5453%) hue-rotate(334deg) brightness(94%) contrast(97%) drop-shadow(0 0 6px rgba(229, 10, 83, 0.8))'
                           : 'invert(16%) sepia(96%) saturate(6000%) hue-rotate(330deg) brightness(95%) contrast(105%)',
-                        transform: isOpen ? 'rotate(180deg) scale(1.1)' : 'rotate(0deg)',
+                        transform: isOpen ? 'rotate(180deg) scale(1.15)' : 'rotate(0deg)',
                         transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease'
                       }}
                     />
@@ -151,7 +151,7 @@ export default function FAQAccordion() {
                   >
                     <div
                       style={{
-                        padding: '0.25rem 1.85rem 1.45rem 1.85rem',
+                        padding: '0.25rem 1.75rem 1.35rem 1.75rem',
                         borderTop: '1px solid rgba(229, 10, 83, 0.15)',
                         marginTop: '0.25rem',
                         paddingTop: '1rem',
