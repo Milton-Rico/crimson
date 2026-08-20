@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function BlogPreview() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   return (
     <section
       id="blog"
@@ -39,9 +43,19 @@ export default function BlogPreview() {
                 letterSpacing: '0.01em'
               }}
             >
-              Pensamiento<br />
-              Estratégico<br />
-              & Growth
+              {isEn ? (
+                <>
+                  Strategic<br />
+                  Thinking<br />
+                  & Growth
+                </>
+              ) : (
+                <>
+                  Pensamiento<br />
+                  Estratégico<br />
+                  & Growth
+                </>
+              )}
             </h2>
           </div>
 
@@ -96,9 +110,19 @@ export default function BlogPreview() {
                   textShadow: '0 2px 12px rgba(0,0,0,0.95)'
                 }}
               >
-                Pensamiento<br />
-                estratégico<br />
-                aplicado
+                {isEn ? (
+                  <>
+                    Applied<br />
+                    strategic<br />
+                    thinking
+                  </>
+                ) : (
+                  <>
+                    Pensamiento<br />
+                    estratégico<br />
+                    aplicado
+                  </>
+                )}
               </div>
             </div>
           </div>

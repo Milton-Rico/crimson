@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function GrowthSystem() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   return (
     <section
       id="growth-system"
@@ -106,7 +110,9 @@ export default function GrowthSystem() {
                 maxWidth: '480px'
               }}
             >
-              La mayoría de estrategias fallan porque trabajan canales, no sistemas.
+              {isEn
+                ? 'Most strategies fail because they work isolated channels, not complete systems.'
+                : 'La mayoría de estrategias fallan porque trabajan canales, no sistemas.'}
             </p>
 
             <p
@@ -119,7 +125,15 @@ export default function GrowthSystem() {
                 maxWidth: '480px'
               }}
             >
-              Nuestro <span className="highlight-badge">enfoque</span> conecta cada parte del proceso para generar resultados reales.
+              {isEn ? (
+                <>
+                  Our <span className="highlight-badge">framework</span> connects every part of the process to generate predictable results.
+                </>
+              ) : (
+                <>
+                  Nuestro <span className="highlight-badge">enfoque</span> conecta cada parte del proceso para generar resultados reales.
+                </>
+              )}
             </p>
 
             <div>

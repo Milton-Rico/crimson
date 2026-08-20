@@ -1,9 +1,13 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { projectsData } from '../data/projectsData';
 import DiagnosticForm from '../components/DiagnosticForm';
 
 export default function ProjectDetailPage() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   const { slug } = useParams();
   const current = projectsData[slug];
 
@@ -51,8 +55,17 @@ export default function ProjectDetailPage() {
             textTransform: 'uppercase'
           }}
         >
-          CASOS<br />
-          <span style={{ color: 'var(--crimson-magenta)' }}>CRIMSON</span> STUDIO
+          {isEn ? (
+            <>
+              CASE STUDIES<br />
+              <span style={{ color: 'var(--crimson-magenta)' }}>CRIMSON</span> STUDIO
+            </>
+          ) : (
+            <>
+              CASOS<br />
+              <span style={{ color: 'var(--crimson-magenta)' }}>CRIMSON</span> STUDIO
+            </>
+          )}
         </h1>
       </div>
 
@@ -74,7 +87,7 @@ export default function ProjectDetailPage() {
             className="hover-crimson"
           >
             <span>←</span>
-            <span>Volver a todos los proyectos</span>
+            <span>{isEn ? 'Back to all case studies' : 'Volver a todos los proyectos'}</span>
           </Link>
         </div>
 
@@ -136,11 +149,19 @@ export default function ProjectDetailPage() {
                 textTransform: 'uppercase'
               }}
             >
-              SERVICIOS<br />INVOLUCRADOS
+              {isEn ? (
+                <>
+                  SERVICES<br />INVOLVED
+                </>
+              ) : (
+                <>
+                  SERVICIOS<br />INVOLUCRADOS
+                </>
+              )}
             </h2>
 
             <p style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: '1.5', maxWidth: '520px', opacity: 0.9 }}>
-              {current.servicesDesc}
+              {isEn ? (current.servicesDescEn || current.servicesDesc) : current.servicesDesc}
             </p>
           </div>
 
@@ -159,7 +180,7 @@ export default function ProjectDetailPage() {
               }}
             />
 
-            {current.servicesBadges.map((badge, idx) => (
+            {(isEn ? (current.servicesBadgesEn || current.servicesBadges) : current.servicesBadges).map((badge, idx) => (
               <div
                 key={idx}
                 style={{
@@ -240,11 +261,19 @@ export default function ProjectDetailPage() {
                 textTransform: 'uppercase'
               }}
             >
-              RESULTADO<br />ESTRATEGICO
+              {isEn ? (
+                <>
+                  STRATEGIC<br />OUTCOMES
+                </>
+              ) : (
+                <>
+                  RESULTADO<br />ESTRATEGICO
+                </>
+              )}
             </h2>
 
             <p style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: '1.6', opacity: 0.9 }}>
-              {current.resultsText}
+              {isEn ? (current.resultsTextEn || current.resultsText) : current.resultsText}
             </p>
           </div>
         </div>
@@ -260,7 +289,7 @@ export default function ProjectDetailPage() {
             marginBottom: '10rem'
           }}
         >
-          {current.cards.map((card, idx) => (
+          {(isEn ? (current.cardsEn || current.cards) : current.cards).map((card, idx) => (
             <div
               key={idx}
               className="crimson-card"

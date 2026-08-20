@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ManifiestoPage() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   return (
     <main
       style={{
@@ -24,7 +28,15 @@ export default function ManifiestoPage() {
             textTransform: 'none'
           }}
         >
-          Crimson<br />Manifiesto
+          {isEn ? (
+            <>
+              Crimson<br />Manifesto
+            </>
+          ) : (
+            <>
+              Crimson<br />Manifiesto
+            </>
+          )}
         </h1>
 
         {/* Manifesto Paragraph */}
@@ -39,7 +51,9 @@ export default function ManifiestoPage() {
               letterSpacing: '-0.01em'
             }}
           >
-            Estamos aqui para organizar somos eficientes, puntuales y en mejora constante creamos sistemas y marcas capaces de enfrentarse a un sistema digital agresivo y en constante crecimiento, creamos sistemas en constante optimizacion nos gustan los retos y nos sentimos completamente preparados para tomarlos crimson es el sistema que parte no solo del orden si no desde la eficiencia y la optimizacion de procesos para que todo trabaje para ti y no en tu contra
+            {isEn
+              ? 'We are here to organize. We are efficient, punctual, and in constant evolution. We build systems and brands capable of commanding an aggressive and rapidly expanding digital landscape. We create architectures in continuous optimization—we thrive on ambitious challenges and are fully prepared to conquer them. Crimson is the growth system engineered not merely from order, but from relentless efficiency and process optimization, ensuring everything works relentlessly for you, never against you.'
+              : 'Estamos aqui para organizar somos eficientes, puntuales y en mejora constante creamos sistemas y marcas capaces de enfrentarse a un sistema digital agresivo y en constante crecimiento, creamos sistemas en constante optimizacion nos gustan los retos y nos sentimos completamente preparados para tomarlos crimson es el sistema que parte no solo del orden si no desde la eficiencia y la optimizacion de procesos para que todo trabaje para ti y no en tu contra.'}
           </p>
         </div>
 
@@ -65,7 +79,15 @@ export default function ManifiestoPage() {
                 textTransform: 'uppercase'
               }}
             >
-              ALIADOS<br />ESTRATEGICOS
+              {isEn ? (
+                <>
+                  STRATEGIC<br />ALLIES
+                </>
+              ) : (
+                <>
+                  ALIADOS<br />ESTRATEGICOS
+                </>
+              )}
             </h2>
           </div>
 
@@ -90,7 +112,7 @@ export default function ManifiestoPage() {
               letterSpacing: '0.05em'
             }}
           >
-            MIAMI PRINT<br />AND SING
+            MIAMI PRINT<br />AND SIGN
           </div>
         </div>
       </div>

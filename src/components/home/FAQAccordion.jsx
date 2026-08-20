@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function FAQAccordion() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
   const [openIdx, setOpenIdx] = useState(null);
 
-  const questions = [
+  const questionsEs = [
     { q: '¿Qué hace exactamente Crimson Studio?', a: 'Construimos sistemas integrados de crecimiento que conectan estrategia, producción de contenido, desarrollo de activos digitales y operaciones de performance para escalar la rentabilidad de tu marca.' },
     { q: '¿Son una agencia de marketing digital?', a: 'No somos una agencia tradicional de entregables aislados. Operamos como tu socio estratégico y motor de crecimiento construyendo sistemas a largo plazo.' },
     { q: '¿Con qué tipo de clientes trabajan?', a: 'Trabajamos con marcas y negocios validados, empresas en aceleración y líderes de categoría que buscan estructura y escala.' },
@@ -22,8 +25,30 @@ export default function FAQAccordion() {
     { q: '¿Cómo sé si Crimson Studio es el partner adecuado para mi empresa?', a: 'Si buscas un equipo que piense en tu negocio con visión de largo plazo y no solo en "hacer piezas", somos el partner indicado.' }
   ];
 
+  const questionsEn = [
+    { q: 'What exactly does Crimson Studio do?', a: 'We build integrated growth systems connecting strategy, content production, digital asset development, and performance operations to scale your brand’s profitability.' },
+    { q: 'Are you a traditional digital marketing agency?', a: 'No. We are not a deliverables-based agency. We operate as your long-term strategic growth partner building unified systems.' },
+    { q: 'What kind of clients do you work with?', a: 'We work with validated brands, scaling enterprises, and category leaders seeking infrastructure and market dominance.' },
+    { q: 'Do you work with small businesses?', a: 'We work with businesses that have product-market fit, real traction, and readiness to invest in scalable digital infrastructure.' },
+    { q: 'What sets Crimson Studio apart?', a: 'The absolute integration of business strategy, elite aesthetics, and ruthless technical execution without fragmented handoffs.' },
+    { q: 'What is a strategic diagnostic?', a: 'It is an in-depth analytical session where we evaluate your core bottleneck, scaling viability, and map out your custom growth blueprint.' },
+    { q: 'Do I need an established brand identity to work with you?', a: 'Not necessarily; if your offer is validated, we build or refine your complete brand architecture during Phase 1.' },
+    { q: 'Do you also develop websites?', a: 'Yes. We design and engineer high-performance websites and landing pages optimized for maximum speed and conversion.' },
+    { q: 'Do you manage advertising campaigns?', a: 'Yes. As part of Growth Operations, we manage high-ROI Paid Media campaigns focused on measurable business outcomes.' },
+    { q: 'What does the workflow look like?', a: 'We operate across 4 structured phases: Strategy, Content Production, Asset Development, and Growth Operations.' },
+    { q: 'Do you create social media content?', a: 'We engineer visual authority systems with strategic copywriting, professional filmmaking, and high-converting creative assets.' },
+    { q: 'Do you work per project or monthly retainers?', a: 'We tailor agreements to each client’s stage—from turnkey infrastructure sprints to ongoing growth partnerships.' },
+    { q: 'How much does it cost to work with Crimson Studio?', a: 'Our engagements are custom-priced based on the diagnostic findings and your company’s revenue growth objectives.' },
+    { q: 'Do you only operate in Colombia?', a: 'We serve clients across Colombia, the United States, Latin America, and Europe both remotely and on-site.' },
+    { q: 'What is required to get started?', a: 'Fill out our diagnostic questionnaire to review your business metrics and schedule a strategic evaluation call.' },
+    { q: 'How do I know if Crimson Studio is the right partner for my brand?', a: 'If you want a team that thinks like business founders with long-term compound vision rather than just making isolated assets, we are the right partner.' }
+  ];
+
+  const questions = isEn ? questionsEn : questionsEs;
+
   return (
     <section
+      id="faq"
       style={{
         background: '#000000',
         padding: '7rem 0 8rem 0',
@@ -43,7 +68,15 @@ export default function FAQAccordion() {
               textTransform: 'uppercase'
             }}
           >
-            PREGUNTAS<br />FRECUENTES
+            {isEn ? (
+              <>
+                FREQUENTLY<br />ASKED QUESTIONS
+              </>
+            ) : (
+              <>
+                PREGUNTAS<br />FRECUENTES
+              </>
+            )}
           </h2>
         </div>
 
@@ -178,8 +211,17 @@ export default function FAQAccordion() {
         {/* Bottom CTA text */}
         <div style={{ textAlign: 'center' }}>
           <p style={{ color: '#ffffff', fontSize: '1.05rem', lineHeight: '1.4' }}>
-            Agenda un diagnóstico y descubre las<br />
-            oportunidades de crecimiento de tu marca.
+            {isEn ? (
+              <>
+                Schedule a diagnostic and discover the<br />
+                untapped growth opportunities for your brand.
+              </>
+            ) : (
+              <>
+                Agenda un diagnóstico y descubre las<br />
+                oportunidades de crecimiento de tu marca.
+              </>
+            )}
           </p>
         </div>
       </div>

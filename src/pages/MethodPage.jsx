@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -16,90 +17,84 @@ function AnimatedTimeline({ steps, align = 'right' }) {
     const container = containerRef.current;
     if (!container) return;
 
-    // Timeout ensures window.scrollTo(0,0) and ScrollTrigger.refresh() finished
-    const timeout = setTimeout(() => {
-      const line = lineRef.current;
-      const items = itemsRef.current.filter(Boolean);
-      if (!line || !container) return;
+    const line = lineRef.current;
+    const items = itemsRef.current.filter(Boolean);
+    if (!line) return;
 
-      // Initial state: line is scaleY 0, items are grey/dim
-      gsap.set(line, { scaleY: 0, transformOrigin: 'top center' });
-      items.forEach((item) => {
-        const diamond = item.querySelector('.timeline-diamond');
-        const text = item.querySelector('.timeline-text');
-        const icon = item.querySelector('.timeline-icon');
+    // Initial state: line is scaleY 0, items are grey/dim
+    gsap.set(line, { scaleY: 0, transformOrigin: 'top center' });
+    items.forEach((item) => {
+      const diamond = item.querySelector('.timeline-diamond');
+      const text = item.querySelector('.timeline-text');
+      const icon = item.querySelector('.timeline-icon');
 
-        gsap.set(diamond, {
-          borderColor: 'rgba(255, 255, 255, 0.22)',
-          backgroundColor: '#050505',
-          boxShadow: 'none'
-        });
-        gsap.set(text, { color: 'rgba(255, 255, 255, 0.45)' });
-        gsap.set(icon, {
-          filter: 'grayscale(1) brightness(0.4) opacity(0.5)',
-          scale: 0.9
-        });
+      gsap.set(diamond, {
+        borderColor: 'rgba(255, 255, 255, 0.22)',
+        backgroundColor: '#050505',
+        boxShadow: 'none'
       });
-
-      // ScrollTrigger Timeline - triggers only when scrolling into view
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-          invalidateOnRefresh: true
-        }
+      gsap.set(text, { color: 'rgba(255, 255, 255, 0.45)' });
+      gsap.set(icon, {
+        filter: 'grayscale(1) brightness(0.4) opacity(0.5)',
+        scale: 0.9
       });
+    });
 
-      // Animate line drawing down
-      tl.to(line, {
-        scaleY: 1,
-        duration: 1.2,
-        ease: 'power2.out'
-      }, 0);
+    // ScrollTrigger Timeline - triggers naturally on scroll
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      }
+    });
 
-      // Stagger illuminate each diamond and text to crimson sequentially
-      items.forEach((item, idx) => {
-        const diamond = item.querySelector('.timeline-diamond');
-        const text = item.querySelector('.timeline-text');
-        const icon = item.querySelector('.timeline-icon');
+    // Animate line drawing down
+    tl.to(line, {
+      scaleY: 1,
+      duration: 1,
+      ease: 'power2.out'
+    }, 0);
 
-        tl.to(
-          diamond,
-          {
-            borderColor: '#e50a53',
-            backgroundColor: '#000000',
-            boxShadow: '0 0 16px rgba(229, 10, 83, 0.5), inset 0 0 8px rgba(229, 10, 83, 0.25)',
-            duration: 0.35,
-            ease: 'power1.out'
-          },
-          idx * 0.22
-        );
+    // Stagger illuminate each diamond and text to crimson sequentially
+    items.forEach((item, idx) => {
+      const diamond = item.querySelector('.timeline-diamond');
+      const text = item.querySelector('.timeline-text');
+      const icon = item.querySelector('.timeline-icon');
 
-        tl.to(
-          icon,
-          {
-            filter: 'brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5453%) hue-rotate(334deg) brightness(94%) contrast(97%)',
-            scale: 1,
-            duration: 0.35,
-            ease: 'back.out(1.5)'
-          },
-          idx * 0.22
-        );
+      tl.to(
+        diamond,
+        {
+          borderColor: '#e50a53',
+          backgroundColor: '#000000',
+          boxShadow: '0 0 16px rgba(229, 10, 83, 0.5), inset 0 0 8px rgba(229, 10, 83, 0.25)',
+          duration: 0.3,
+          ease: 'power1.out'
+        },
+        idx * 0.18
+      );
 
-        tl.to(
-          text,
-          {
-            color: '#ffffff',
-            duration: 0.35,
-            ease: 'power1.out'
-          },
-          idx * 0.22
-        );
-      });
-    }, 70);
+      tl.to(
+        icon,
+        {
+          filter: 'brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5453%) hue-rotate(334deg) brightness(94%) contrast(97%)',
+          scale: 1,
+          duration: 0.3,
+          ease: 'back.out(1.5)'
+        },
+        idx * 0.18
+      );
 
-    return () => clearTimeout(timeout);
+      tl.to(
+        text,
+        {
+          color: '#ffffff',
+          duration: 0.3,
+          ease: 'power1.out'
+        },
+        idx * 0.18
+      );
+    });
   }, { scope: containerRef });
 
   return (
@@ -150,7 +145,8 @@ function AnimatedTimeline({ steps, align = 'right' }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1.75rem',
-                justifyContent: isRight ? 'flex-end' : 'flex-start'
+                justifyContent: isRight ? 'flex-end' : 'flex-start',
+                flexDirection: isRight ? 'row' : 'row'
               }}
             >
               {/* If aligned right: Text comes first on left, diamond on right */}
@@ -232,6 +228,9 @@ function AnimatedTimeline({ steps, align = 'right' }) {
 }
 
 export default function MethodPage() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   const heroRef = useRef(null);
   const floatingRocksRef = useRef(null);
 
@@ -257,24 +256,107 @@ export default function MethodPage() {
     }
   };
 
-  const features = [
-    {
-      title: 'CLARIDAD',
-      desc: 'Sin claridad, todo se diluye. Definimos el núcleo estratégico de tu marca.'
-    },
-    {
-      title: 'PRESENCIA',
-      desc: 'Tu marca no compite solo con precio, compite con percepción. Construimos una presencia que genere confianza.'
-    },
-    {
-      title: 'CONVERSION',
-      desc: 'La atención sin estructura no sirve. Diseñamos activos que convierten.'
-    },
-    {
-      title: 'CRECIMIENTO',
-      desc: 'El crecimiento no es suerte, es iteración. Medimos, optimizamos y escalamos.'
-    }
-  ];
+  const features = isEn
+    ? [
+        {
+          title: 'CLARITY',
+          desc: 'Without clarity, everything dilutes. We define the strategic core of your brand.'
+        },
+        {
+          title: 'PRESENCE',
+          desc: 'Your brand does not just compete on price; it competes on perception. We build presence that inspires trust.'
+        },
+        {
+          title: 'CONVERSION',
+          desc: 'Attention without structure is worthless. We engineer high-converting digital assets.'
+        },
+        {
+          title: 'GROWTH',
+          desc: 'Scaling is not luck; it is continuous iteration. We measure, optimize, and scale.'
+        }
+      ]
+    : [
+        {
+          title: 'CLARIDAD',
+          desc: 'Sin claridad, todo se diluye. Definimos el núcleo estratégico de tu marca.'
+        },
+        {
+          title: 'PRESENCIA',
+          desc: 'Tu marca no compite solo con precio, compite con percepción. Construimos una presencia que genere confianza.'
+        },
+        {
+          title: 'CONVERSION',
+          desc: 'La atención sin estructura no sirve. Diseñamos activos que convierten.'
+        },
+        {
+          title: 'CRECIMIENTO',
+          desc: 'El crecimiento no es suerte, es iteración. Medimos, optimizamos y escalamos.'
+        }
+      ];
+
+  const strategySteps = isEn
+    ? [
+        { title: 'Brand & Market Audit', icon: '/assets/metodologia/Recurso 13.svg' },
+        { title: 'Irresistible Offer Architecture', icon: '/assets/metodologia/Recurso 14.svg' },
+        { title: 'Category Positioning', icon: '/assets/metodologia/Recurso 15.svg' },
+        { title: 'Conversion Funnel Mapping', icon: '/assets/metodologia/Recurso 16.svg' },
+        { title: 'Quarterly Execution Blueprint', icon: '/assets/metodologia/Recurso 17.svg' }
+      ]
+    : [
+        { title: 'Auditoría de marca y mercado', icon: '/assets/metodologia/Recurso 13.svg' },
+        { title: 'Arquitectura de oferta irresistible', icon: '/assets/metodologia/Recurso 14.svg' },
+        { title: 'Posicionamiento de categoría', icon: '/assets/metodologia/Recurso 15.svg' },
+        { title: 'Mapa de conversión y audiencia', icon: '/assets/metodologia/Recurso 16.svg' },
+        { title: 'Plan de ejecución trimestral', icon: '/assets/metodologia/Recurso 17.svg' }
+      ];
+
+  const contentSteps = isEn
+    ? [
+        { title: 'Creative Direction & Narrative', icon: '/assets/metodologia/Recurso 18.svg' },
+        { title: 'High-Impact Audiovisual Production', icon: '/assets/metodologia/Recurso 19.svg' },
+        { title: 'Strategic Conversion Copywriting', icon: '/assets/metodologia/Recurso 20.svg' },
+        { title: 'Multi-Channel Distribution Systems', icon: '/assets/metodologia/Recurso 21.svg' },
+        { title: 'Audience Retention Optimization', icon: '/assets/metodologia/Recurso 22.svg' }
+      ]
+    : [
+        { title: 'Dirección creativa y narrativa', icon: '/assets/metodologia/Recurso 18.svg' },
+        { title: 'Producción audiovisual de alto impacto', icon: '/assets/metodologia/Recurso 19.svg' },
+        { title: 'Copywriting estratégico de conversión', icon: '/assets/metodologia/Recurso 20.svg' },
+        { title: 'Sistemas de distribución multicanal', icon: '/assets/metodologia/Recurso 21.svg' },
+        { title: 'Optimización de retención de audiencia', icon: '/assets/metodologia/Recurso 22.svg' }
+      ];
+
+  const assetsSteps = isEn
+    ? [
+        { title: 'Vanguard UI/UX Digital Design', icon: '/assets/metodologia/Recurso 13.svg' },
+        { title: 'High-Performance Web Engineering', icon: '/assets/metodologia/Recurso 14.svg' },
+        { title: 'High-Converting Sales Landing Pages', icon: '/assets/metodologia/Recurso 15.svg' },
+        { title: 'Cohesive Brand Design Systems', icon: '/assets/metodologia/Recurso 16.svg' },
+        { title: 'End-to-End Tracking & Analytics', icon: '/assets/metodologia/Recurso 17.svg' }
+      ]
+    : [
+        { title: 'Diseño UI/UX de vanguardia', icon: '/assets/metodologia/Recurso 13.svg' },
+        { title: 'Desarrollo web de alta velocidad', icon: '/assets/metodologia/Recurso 14.svg' },
+        { title: 'Landing pages de alta conversión', icon: '/assets/metodologia/Recurso 15.svg' },
+        { title: 'Sistemas de identidad y diseño', icon: '/assets/metodologia/Recurso 16.svg' },
+        { title: 'Integración completa de analítica', icon: '/assets/metodologia/Recurso 17.svg' }
+      ];
+
+  const operationsSteps = isEn
+    ? [
+        { title: 'Paid Media & High-Intent Traffic', icon: '/assets/metodologia/Recurso 18.svg' },
+        { title: 'Automated CRM & Lead Workflows', icon: '/assets/metodologia/Recurso 19.svg' },
+        { title: 'Real-Time Executive KPI Dashboard', icon: '/assets/metodologia/Recurso 20.svg' },
+        { title: 'Continuous Funnel CRO Testing', icon: '/assets/metodologia/Recurso 21.svg' },
+        { title: 'Sustainable Long-Term Revenue Scaling', icon: '/assets/metodologia/Recurso 22.svg' }
+      ]
+    : [
+        { title: 'Paid Media y tráfico calificado', icon: '/assets/metodologia/Recurso 18.svg' },
+        { title: 'Automatización de flujos y CRM', icon: '/assets/metodologia/Recurso 19.svg' },
+        { title: 'Monitoreo de KPIs ejecutivos en vivo', icon: '/assets/metodologia/Recurso 20.svg' },
+        { title: 'Iteración continua y CRO de embudos', icon: '/assets/metodologia/Recurso 21.svg' },
+        { title: 'Escala sostenible de rentabilidad', icon: '/assets/metodologia/Recurso 22.svg' }
+      ];
 
   return (
     <main
@@ -351,7 +433,7 @@ export default function MethodPage() {
           {/* Outline CTA Button */}
           <div style={{ marginBottom: '3.5rem' }}>
             <button onClick={scrollToDiagnosis} className="btn-outline">
-              AGENDA UN DIAGNÓSTICO
+              {isEn ? 'SCHEDULE A DIAGNOSTIC' : 'AGENDA UN DIAGNÓSTICO'}
             </button>
           </div>
 
@@ -366,8 +448,17 @@ export default function MethodPage() {
               margin: '0 auto'
             }}
           >
-            No ejecutamos tareas. Construimos<br />
-            arquitectura de crecimiento.
+            {isEn ? (
+              <>
+                We do not execute random tasks.<br />
+                We engineer growth architectures.
+              </>
+            ) : (
+              <>
+                No ejecutamos tareas. Construimos<br />
+                arquitectura de crecimiento.
+              </>
+            )}
           </p>
         </div>
       </section>
@@ -497,7 +588,7 @@ export default function MethodPage() {
                   opacity: 0.9
                 }}
               >
-                Definimos la base de todo.
+                {isEn ? 'We define the foundation of everything.' : 'Definimos la base de todo.'}
               </p>
 
               <img
@@ -518,19 +609,15 @@ export default function MethodPage() {
                     lineHeight: '1.3'
                   }}
                 >
-                  El Roadmap. Diagnóstico profundo y narrativa de poder.
+                  {isEn
+                    ? 'The Growth Blueprint. In-depth strategic audit and category power narrative.'
+                    : 'El Roadmap. Diagnóstico profundo y narrativa de poder.'}
                 </p>
               </div>
 
               <AnimatedTimeline
                 align="right"
-                steps={[
-                  { title: 'Diagnóstico', icon: '/assets/metodologia/Recurso 2.svg' },
-                  { title: 'Posicionamiento', icon: '/assets/metodologia/Recurso 3.svg' },
-                  { title: 'Propuesta de valor', icon: '/assets/metodologia/Recurso 4.svg' },
-                  { title: 'Narrativa', icon: '/assets/metodologia/Recurso 5.svg' },
-                  { title: 'Roadmap', icon: '/assets/metodologia/Recurso 6.svg' }
-                ]}
+                steps={strategySteps}
               />
             </div>
           </div>
@@ -595,18 +682,12 @@ export default function MethodPage() {
                   opacity: 0.9
                 }}
               >
-                Construimos presencia y autoridad.
+                {isEn ? 'We build presence, status, and authority.' : 'Construimos presencia y autoridad.'}
               </p>
 
               <AnimatedTimeline
                 align="left"
-                steps={[
-                  { title: 'Producción de contenido', icon: '/assets/metodologia/Recurso 7.svg' },
-                  { title: 'Grabación', icon: '/assets/metodologia/Recurso 8.svg' },
-                  { title: 'Fotografía', icon: '/assets/metodologia/Recurso 9.svg' },
-                  { title: 'Dirección creativa', icon: '/assets/metodologia/Recurso 10.svg' },
-                  { title: 'Creativos', icon: '/assets/metodologia/Recurso 11.svg' }
-                ]}
+                steps={contentSteps}
               />
             </div>
 
@@ -621,7 +702,9 @@ export default function MethodPage() {
                     lineHeight: '1.3'
                   }}
                 >
-                  Autoridad visual. Contenido que educa y eleva el estatus de la marca.
+                  {isEn
+                    ? 'Visual authority. High-retention narrative content that educates and elevates brand status.'
+                    : 'Autoridad visual. Contenido que educa y eleva el estatus de la marca.'}
                 </p>
               </div>
 
@@ -693,7 +776,7 @@ export default function MethodPage() {
                   opacity: 0.9
                 }}
               >
-                Creamos la infraestructura digital.
+                {isEn ? 'We engineer scalable digital infrastructure.' : 'Creamos la infraestructura digital.'}
               </p>
 
               <img
@@ -714,19 +797,15 @@ export default function MethodPage() {
                     lineHeight: '1.3'
                   }}
                 >
-                  Infraestructura de conversión. Desarrollo de ecosistemas digitales que venden.
+                  {isEn
+                    ? 'Conversion infrastructure. Engineering modern digital ecosystems built to turn traffic into revenue.'
+                    : 'Infraestructura de conversión. Desarrollo de ecosistemas digitales que venden.'}
                 </p>
               </div>
 
               <AnimatedTimeline
                 align="right"
-                steps={[
-                  { title: 'Desarrollo web', icon: '/assets/metodologia/Recurso 12.svg' },
-                  { title: 'Landing pages', icon: '/assets/metodologia/Recurso 13.svg' },
-                  { title: 'Copy', icon: '/assets/metodologia/Recurso 14.svg' },
-                  { title: 'SEO base', icon: '/assets/metodologia/Recurso 15.svg' },
-                  { title: 'Estructura de conversión', icon: '/assets/metodologia/Recurso 16.svg' }
-                ]}
+                steps={assetsSteps}
               />
             </div>
           </div>
@@ -791,18 +870,12 @@ export default function MethodPage() {
                   opacity: 0.9
                 }}
               >
-                Activamos y optimizamos el sistema.
+                {isEn ? 'We activate, optimize, and scale the engine.' : 'Activamos y optimizamos el sistema.'}
               </p>
 
               <AnimatedTimeline
                 align="left"
-                steps={[
-                  { title: 'Campañas', icon: '/assets/metodologia/Recurso 17.svg' },
-                  { title: 'Pauta', icon: '/assets/metodologia/Recurso 18.svg' },
-                  { title: 'Análisis', icon: '/assets/metodologia/Recurso 19.svg' },
-                  { title: 'Optimización', icon: '/assets/metodologia/Recurso 20.svg' },
-                  { title: 'Seguimiento', icon: '/assets/metodologia/Recurso 2.svg' }
-                ]}
+                steps={operationsSteps}
               />
             </div>
 
@@ -817,7 +890,9 @@ export default function MethodPage() {
                     lineHeight: '1.3'
                   }}
                 >
-                  El motor de escala. Gestión de pauta y optimización constante del embudo.
+                  {isEn
+                    ? 'The scaling engine. High-ROI paid media management and continuous conversion rate optimization.'
+                    : 'El motor de escala. Gestión de pauta y optimización constante del embudo.'}
                 </p>
               </div>
 

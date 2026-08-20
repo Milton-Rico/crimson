@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm } from '@formspree/react';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 
 export default function DiagnosticForm() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   const formId = import.meta.env.VITE_FORMSPREE_FORM_ID || 'xvgpzyob';
   const [state, handleSubmit] = useForm(formId);
 
@@ -69,7 +73,7 @@ export default function DiagnosticForm() {
             textTransform: 'uppercase'
           }}
         >
-          DIAGNOSTICO
+          {isEn ? 'DIAGNOSTIC' : 'DIAGNOSTICO'}
         </h2>
         <div
           style={{
@@ -133,17 +137,30 @@ export default function DiagnosticForm() {
               color: '#ffffff'
             }}
           >
-            Entendamos donde<br />
-            estas y proyectemos<br />
-            hacia donde puedes<br />
-            llegar.
+            {isEn ? (
+              <>
+                Let's understand where<br />
+                you stand and project<br />
+                how far you can<br />
+                scale.
+              </>
+            ) : (
+              <>
+                Entendamos donde<br />
+                estas y proyectemos<br />
+                hacia donde puedes<br />
+                llegar.
+              </>
+            )}
           </h2>
         </div>
 
         {/* Subtitle */}
         <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 3.5rem auto' }}>
           <p style={{ color: '#ffffff', fontSize: '1.05rem', lineHeight: '1.45', opacity: 0.85 }}>
-            Antes de hablar de ejecución, necesitamos entender la viabilidad de tu crecimiento. No somos para todos, y eso es lo que nos permite dar resultados extraordinarios.
+            {isEn
+              ? 'Before talking about execution, we need to assess the real viability of your scaling. We are not for everyone, and that is precisely what allows us to deliver extraordinary results.'
+              : 'Antes de hablar de ejecución, necesitamos entender la viabilidad de tu crecimiento. No somos para todos, y eso es lo que nos permite dar resultados extraordinarios.'}
           </p>
         </div>
 
@@ -160,10 +177,12 @@ export default function DiagnosticForm() {
           >
             <CheckCircle2 size={56} style={{ color: 'var(--crimson-magenta)', margin: '0 auto 1.5rem auto' }} />
             <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '2rem', color: '#fff', marginBottom: '1rem' }}>
-              ¡Diagnóstico Solicitado!
+              {isEn ? 'Diagnostic Requested!' : '¡Diagnóstico Solicitado!'}
             </h3>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', maxWidth: '480px', margin: '0 auto' }}>
-              Gracias por tu información. Nuestro equipo evaluará tu caso y te contactará a la brevedad.
+              {isEn
+                ? 'Thank you for your submission. Our strategic team will review your business metrics and get in touch shortly.'
+                : 'Gracias por tu información. Nuestro equipo evaluará tu caso y te contactará a la brevedad.'}
             </p>
           </div>
         ) : (
@@ -178,7 +197,7 @@ export default function DiagnosticForm() {
                   required
                   value={form.nombre}
                   onChange={handleChange}
-                  placeholder="Nombre completo *"
+                  placeholder={isEn ? 'Full name *' : 'Nombre completo *'}
                   className="crimson-input"
                 />
               </div>
@@ -189,7 +208,7 @@ export default function DiagnosticForm() {
                   required
                   value={form.empresa}
                   onChange={handleChange}
-                  placeholder="Empresa / Marca *"
+                  placeholder={isEn ? 'Company / Brand *' : 'Empresa / Marca *'}
                   className="crimson-input"
                 />
               </div>
@@ -204,7 +223,7 @@ export default function DiagnosticForm() {
                 maxLength={250}
                 value={form.ticket}
                 onChange={handleChange}
-                placeholder="¿Qué vendes y a qué precio (Ticket promedio)? *"
+                placeholder={isEn ? 'What do you sell and at what price (Average ticket / order value)? *' : '¿Qué vendes y a qué precio (Ticket promedio)? *'}
                 className="crimson-input"
                 style={{ resize: 'vertical', paddingBottom: '1.5rem' }}
               />
@@ -222,7 +241,7 @@ export default function DiagnosticForm() {
                 maxLength={250}
                 value={form.cuelloDeBotella}
                 onChange={handleChange}
-                placeholder="¿Cuál es el cuello de botella que frena tu crecimiento hoy? *"
+                placeholder={isEn ? 'What is the primary bottleneck halting your revenue growth today? *' : '¿Cuál es el cuello de botella que frena tu crecimiento hoy? *'}
                 className="crimson-input"
                 style={{ resize: 'vertical', paddingBottom: '1.5rem' }}
               />
@@ -240,7 +259,7 @@ export default function DiagnosticForm() {
                 maxLength={250}
                 value={form.inversionPlazo}
                 onChange={handleChange}
-                placeholder="¿Estás listo para invertir en una estructura a largo plazo? *"
+                placeholder={isEn ? 'Are you ready to invest in a long-term growth infrastructure? *' : '¿Estás listo para invertir en una estructura a largo plazo? *'}
                 className="crimson-input"
                 style={{ resize: 'vertical', paddingBottom: '1.5rem' }}
               />
@@ -258,7 +277,7 @@ export default function DiagnosticForm() {
                   required
                   value={form.correo}
                   onChange={handleChange}
-                  placeholder="Correo electrónico *"
+                  placeholder={isEn ? 'Email address *' : 'Correo electrónico *'}
                   className="crimson-input"
                 />
               </div>
@@ -269,6 +288,7 @@ export default function DiagnosticForm() {
                   name="codigoPais"
                   value={form.codigoPais}
                   onChange={handleChange}
+                  aria-label={isEn ? 'Country Code' : 'Código de País'}
                   style={{
                     background: '#000000',
                     border: '1px solid var(--border-light)',
@@ -283,7 +303,7 @@ export default function DiagnosticForm() {
                   }}
                 >
                   {countryCodes.map((c) => (
-                    <option key={c.code} value={c.code} style={{ background: '#111', color: '#fff' }}>
+                    <option key={c.code} value={c.code} style={{ background: '#0a0a0c', color: '#fff' }}>
                       {c.flag} {c.code}
                     </option>
                   ))}
@@ -295,7 +315,7 @@ export default function DiagnosticForm() {
                   required
                   value={form.telefono}
                   onChange={handleChange}
-                  placeholder="Número de contacto *"
+                  placeholder={isEn ? 'Phone / WhatsApp *' : 'Teléfono / WhatsApp *'}
                   className="crimson-input"
                   style={{ flex: 1 }}
                 />
@@ -306,20 +326,32 @@ export default function DiagnosticForm() {
             <input type="hidden" name="telefono_completo" value={`${form.codigoPais} ${form.telefono}`} />
 
             {/* Submit Button */}
-            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
               <button
                 type="submit"
                 disabled={state.submitting}
                 className="btn-solid-crimson"
-                style={{ width: 'auto', minWidth: '320px' }}
+                style={{
+                  width: '100%',
+                  maxWidth: '380px',
+                  padding: '1.05rem 2rem',
+                  fontSize: '1.05rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.04em',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.75rem',
+                  opacity: state.submitting ? 0.7 : 1
+                }}
               >
                 {state.submitting ? (
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Loader2 size={18} className="animate-spin" />
-                    Enviando...
-                  </span>
+                  <>
+                    <Loader2 size={20} className="animate-spin" />
+                    <span>{isEn ? 'SENDING DIAGNOSTIC...' : 'ENVIANDO DIAGNÓSTICO...'}</span>
+                  </>
                 ) : (
-                  'Solicitar Diagnóstico de Crecimiento.'
+                  <span>{isEn ? 'SCHEDULE DIAGNOSTIC' : 'AGENDA UN DIAGNÓSTICO'}</span>
                 )}
               </button>
             </div>

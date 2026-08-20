@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function MethodPhrase() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   return (
     <section
       id="metodo-frase"
@@ -40,7 +44,15 @@ export default function MethodPhrase() {
             letterSpacing: '-0.01em'
           }}
         >
-          La mayoría de las marcas hoy publican, invierten en pauta o hacen cambios aislados... pero no tienen una base clara que conecte todo eso con resultados.— <span style={{ fontWeight: '600' }}>Método Crimson</span>
+          {isEn ? (
+            <>
+              Most brands today post content, invest in ads, or make isolated tweaks... but lack a clear foundation connecting all of it to real business outcomes. — <span style={{ fontWeight: '600' }}>Crimson Method</span>
+            </>
+          ) : (
+            <>
+              La mayoría de las marcas hoy publican, invierten en pauta o hacen cambios aislados... pero no tienen una base clara que conecte todo eso con resultados. — <span style={{ fontWeight: '600' }}>Método Crimson</span>
+            </>
+          )}
         </h2>
       </div>
     </section>

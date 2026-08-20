@@ -1,24 +1,47 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Benefits() {
-  const cards = [
-    {
-      title: 'PERCEPCION DE ELITE',
-      desc: 'Tu marca pasa de ser una opción a ser la referencia.'
-    },
-    {
-      title: 'ACTIVOS DE VENTA',
-      desc: 'Tu web y contenido filtran y convencen antes de la primera llamada.'
-    },
-    {
-      title: 'LEADS CALIFICADOS',
-      desc: 'Menos cantidad, mayor intención de compra.'
-    },
-    {
-      title: 'CLARIDAD OPERATIVA',
-      desc: 'Sabes exactamente qué estás midiendo y por qué.'
-    }
-  ];
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
+  const cards = isEn
+    ? [
+        {
+          title: 'ELITE PERCEPTION',
+          desc: 'Your brand shifts from being just an option to becoming the category reference.'
+        },
+        {
+          title: 'SALES ASSETS',
+          desc: 'Your website and content qualify and persuade prospects before the first call.'
+        },
+        {
+          title: 'QUALIFIED LEADS',
+          desc: 'Less volume noise, dramatically higher purchase intent and deal size.'
+        },
+        {
+          title: 'OPERATIONAL CLARITY',
+          desc: 'You know exactly what you are measuring, optimizing, and why.'
+        }
+      ]
+    : [
+        {
+          title: 'PERCEPCION DE ELITE',
+          desc: 'Tu marca pasa de ser una opción a ser la referencia.'
+        },
+        {
+          title: 'ACTIVOS DE VENTA',
+          desc: 'Tu web y contenido filtran y convencen antes de la primera llamada.'
+        },
+        {
+          title: 'LEADS CALIFICADOS',
+          desc: 'Menos cantidad, mayor intención de compra.'
+        },
+        {
+          title: 'CLARIDAD OPERATIVA',
+          desc: 'Sabes exactamente qué estás midiendo y por qué.'
+        }
+      ];
 
   return (
     <section
@@ -89,11 +112,23 @@ export default function Benefits() {
                 fontWeight: 'normal'
               }}
             >
-              Dejamos de<br />
-              perseguir<br />
-              algoritmos<br />
-              para dominar<br />
-              categorias.
+              {isEn ? (
+                <>
+                  We stop<br />
+                  chasing<br />
+                  algorithms<br />
+                  to dominate<br />
+                  categories.
+                </>
+              ) : (
+                <>
+                  Dejamos de<br />
+                  perseguir<br />
+                  algoritmos<br />
+                  para dominar<br />
+                  categorias.
+                </>
+              )}
             </h2>
 
             {/* Bottom Large Floating Flower */}

@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 export default function ProjectsPreview() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   const tweenRef = useRef(null);
@@ -110,7 +113,7 @@ export default function ProjectsPreview() {
               letterSpacing: '0.04em'
             }}
           >
-            Conocer Casos
+            {isEn ? 'Explore Case Studies' : 'Conocer Casos'}
           </Link>
         </div>
       </div>

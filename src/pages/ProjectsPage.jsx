@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { projectsData } from '../data/projectsData';
 import DiagnosticForm from '../components/DiagnosticForm';
 
 export default function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
 
-  const categories = ['Todos', 'Gastronomía', 'Turismo', 'Bienestar / Salud'];
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
+
+  const categories = isEn
+    ? [
+        { id: 'ALL', label: 'All' },
+        { id: 'Gastronomía', label: 'Gastronomy' },
+        { id: 'Turismo', label: 'Tourism' },
+        { id: 'Bienestar / Salud', label: 'Wellness / Health' }
+      ]
+    : [
+        { id: 'ALL', label: 'Todos' },
+        { id: 'Gastronomía', label: 'Gastronomy' },
+        { id: 'Turismo', label: 'Turismo' },
+        { id: 'Bienestar / Salud', label: 'Bienestar / Salud' }
+      ];
 
   const allProjects = Object.values(projectsData);
-  const filteredProjects = selectedCategory === 'Todos'
+  const filteredProjects = selectedCategory === 'ALL'
     ? allProjects
     : allProjects.filter((p) => p.category === selectedCategory);
 
@@ -73,12 +89,23 @@ export default function ProjectsPage() {
             marginBottom: '1rem'
           }}
         >
-          CASOS<br />
-          <span style={{ color: 'var(--crimson-magenta)' }}>CRIMSON</span> STUDIO
+          {isEn ? (
+            <>
+              CASE STUDIES<br />
+              <span style={{ color: 'var(--crimson-magenta)' }}>CRIMSON</span> STUDIO
+            </>
+          ) : (
+            <>
+              CASOS<br />
+              <span style={{ color: 'var(--crimson-magenta)' }}>CRIMSON</span> STUDIO
+            </>
+          )}
         </h1>
 
         <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem', maxWidth: '520px', margin: '0 auto' }}>
-          Arquitectura estratégica, contenido de alto impacto y sistemas de adquisición aplicados a marcas referentes.
+          {isEn
+            ? 'Strategic growth architecture, high-impact narrative content, and automated acquisition engines engineered for category leaders.'
+            : 'Arquitectura estratégica, contenido de alto impacto y sistemas de adquisición aplicados a marcas referentes.'}
         </p>
       </div>
 
@@ -96,11 +123,11 @@ export default function ProjectsPage() {
         >
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
               style={{
-                background: selectedCategory === cat ? 'var(--crimson-magenta)' : 'rgba(255, 255, 255, 0.05)',
-                border: selectedCategory === cat ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
+                background: selectedCategory === cat.id ? 'var(--crimson-magenta)' : 'rgba(255, 255, 255, 0.05)',
+                border: selectedCategory === cat.id ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#ffffff',
                 padding: '0.65rem 1.75rem',
                 borderRadius: '9999px',
@@ -110,7 +137,7 @@ export default function ProjectsPage() {
                 transition: 'all 0.25s ease'
               }}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -174,7 +201,7 @@ export default function ProjectsPage() {
                       textTransform: 'uppercase'
                     }}
                   >
-                    {project.category}
+                    {isEn ? project.categoryEn : project.category}
                   </span>
                 </div>
 
@@ -227,7 +254,7 @@ export default function ProjectsPage() {
 
               {/* View Case Action */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--crimson-magenta)', fontWeight: '600', fontSize: '0.9rem' }}>
-                <span>Ver Caso Completo</span>
+                <span>{isEn ? 'View Full Case Study' : 'Ver Caso Completo'}</span>
                 <span style={{ fontSize: '1.1rem', transition: 'transform 0.2s ease' }}>→</span>
               </div>
             </Link>

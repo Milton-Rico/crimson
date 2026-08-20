@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { i18n } = useTranslation();
+  const isEn = (i18n.language || 'es').startsWith('en');
+
   return (
     <footer
       id="footer-section"
@@ -76,7 +80,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <div style={{ fontWeight: '600', marginBottom: '0.2rem' }}>EEUU</div>
+              <div style={{ fontWeight: '600', marginBottom: '0.2rem' }}>{isEn ? 'USA' : 'EEUU'}</div>
               <div style={{ opacity: 0.85 }}>Miami FL</div>
             </div>
           </div>
@@ -89,11 +93,11 @@ export default function Footer() {
             </div>
 
             <div style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
-              Desarrollado por Crimson Studio
+              {isEn ? 'Engineered by Crimson Studio' : 'Desarrollado por Crimson Studio'}
             </div>
 
             <div style={{ color: '#ffffff', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
-              Contacts
+              {isEn ? 'Contact' : 'Contactos'}
             </div>
 
             <div style={{ marginBottom: '1.5rem' }}>
