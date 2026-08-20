@@ -8,26 +8,28 @@ export default function HeroHome() {
   const floatingRocksRef = useRef(null);
 
   useGSAP(() => {
-    // Gentle floating physics on main rock, preserving the left displacement
+    // Hardware accelerated smooth floating on main rock
     if (rockRef.current) {
       gsap.to(rockRef.current, {
-        y: -12,
-        duration: 4,
+        y: -10,
+        duration: 4.5,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut'
+        ease: 'sine.inOut',
+        force3D: true
       });
     }
 
-    // Subtle breathing/floating on the floating rocks overlay
+    // Hardware accelerated subtle breathing on floating rocks overlay
     if (floatingRocksRef.current) {
       gsap.to(floatingRocksRef.current, {
-        y: -8,
-        x: 4,
-        duration: 5.5,
+        y: -6,
+        x: 3,
+        duration: 6,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut'
+        ease: 'sine.inOut',
+        force3D: true
       });
     }
   }, { scope: heroRef });
@@ -54,11 +56,12 @@ export default function HeroHome() {
         justifyContent: 'center',
         paddingTop: '14.5rem',
         paddingBottom: '8rem',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        transform: 'translateZ(0)'
       }}
       aria-label="Crimson Studio Hero"
     >
-      {/* Single Large Floating Rocks Asset Layer - 100% Opacity and full resolution */}
+      {/* Single Large Floating Rocks Asset Layer - GPU accelerated */}
       <img
         ref={floatingRocksRef}
         src="/assets/rocas/Rocas flotando.png"
@@ -72,7 +75,9 @@ export default function HeroHome() {
           objectFit: 'contain',
           pointerEvents: 'none',
           zIndex: 1,
-          opacity: 1
+          opacity: 1,
+          willChange: 'transform',
+          transform: 'translateZ(0)'
         }}
       />
 
@@ -144,6 +149,21 @@ export default function HeroHome() {
             pointerEvents: 'none'
           }}
         >
+          {/* Lightweight GPU-composited shadow */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '10px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '70%',
+              height: '80px',
+              background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, transparent 75%)',
+              pointerEvents: 'none',
+              zIndex: 1
+            }}
+          />
+
           <img
             ref={rockRef}
             src="/assets/rocas/Roca2.png"
@@ -153,9 +173,11 @@ export default function HeroHome() {
               maxWidth: '960px',
               height: 'auto',
               objectFit: 'contain',
-              transform: 'translateX(-45px)',
-              filter: 'drop-shadow(0 25px 60px rgba(0, 0, 0, 0.98))',
-              pointerEvents: 'none'
+              transform: 'translateX(-45px) translateZ(0)',
+              willChange: 'transform',
+              pointerEvents: 'none',
+              position: 'relative',
+              zIndex: 2
             }}
           />
         </div>

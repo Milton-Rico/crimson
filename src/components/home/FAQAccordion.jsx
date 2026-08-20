@@ -145,18 +145,24 @@ export default function FAQAccordion() {
                       overflow: 'hidden',
                       minHeight: 0,
                       opacity: isOpen ? 1 : 0,
-                      transform: isOpen ? 'translateY(0)' : 'translateY(-8px)',
+                      transform: isOpen ? 'translateY(0)' : 'translateY(-6px)',
                       transition: 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
                     }}
                   >
+                    {/* Subtle Crimson Separator Line */}
                     <div
                       style={{
-                        padding: '0.25rem 1.75rem 1.35rem 1.75rem',
-                        borderTop: '1px solid rgba(229, 10, 83, 0.15)',
-                        marginTop: '0.25rem',
-                        paddingTop: '1rem',
-                        color: 'rgba(255, 255, 255, 0.82)',
-                        fontSize: '0.94rem',
+                        margin: '0 1.75rem',
+                        borderTop: '1px solid rgba(229, 10, 83, 0.2)'
+                      }}
+                    />
+
+                    {/* Perfectly Spaced & Centered Response Content */}
+                    <div
+                      style={{
+                        padding: '1.35rem 1.75rem 1.5rem 1.75rem',
+                        color: 'rgba(255, 255, 255, 0.84)',
+                        fontSize: '0.95rem',
                         lineHeight: '1.65'
                       }}
                     >
