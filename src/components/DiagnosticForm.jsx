@@ -347,7 +347,7 @@ ${form.inversionPlazo.trim()}
                   maxLength={70}
                   value={form.nombre}
                   onChange={handleChange}
-                  placeholder={isEn ? 'Full name (Letters only) *' : 'Nombre completo (Solo letras) *'}
+                  placeholder={isEn ? 'Full name *' : 'Nombre completo *'}
                   className="crimson-input"
                   autoComplete="name"
                 />
@@ -510,7 +510,7 @@ ${form.inversionPlazo.trim()}
                   maxLength={15}
                   value={form.telefono}
                   onChange={handleChange}
-                  placeholder={isEn ? 'Phone (Digits only) *' : 'Teléfono (Solo números) *'}
+                  placeholder={isEn ? 'Phone / WhatsApp *' : 'Teléfono / WhatsApp *'}
                   className="crimson-input"
                   style={{ flex: 1 }}
                   autoComplete="tel"
